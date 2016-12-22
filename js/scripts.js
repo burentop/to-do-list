@@ -1,31 +1,31 @@
-function Contact(first, last) {
-  this.firstName = first;
-  this.lastName = last;
+function Task(name, description) {
+  this.taskName = name;
+  this.taskDescription = description;
 }
 
-Contact.prototype.fullName = function() {
-  return this.firstName + " " + this.lastName;
-}
+//Contact.prototype.fullName = function() {
+  //return this.firstName + " " + this.lastName;
+//}
 
 $(document).ready(function() {
-  $("form#new-contact").submit(function(event) {
+  $("form#new-task").submit(function(event) {
     event.preventDefault();
 
-    var inputtedFirstName = $("input#new-first-name").val();
-    var inputtedLastName = $("input#new-last-name").val();
+    var inputtedTaskName = $("input#new-task-name").val();
+    var inputtedTaskDescription = $("input#new-task-description").val();
 
-    var newContact = new Contact(inputtedFirstName, inputtedLastName);
+    var newTask = new Task(inputtedTaskName, inputtedTaskDescription);
 
-    $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
+    $("ul#tasks").append("<li><span class='task'>" + newTask.taskName + "</span></li>");
 
-    $(".contact").last().click(function() {
-      $("#show-contact").show();
-      $("#show-contact h2").text(newContact.firstName;
-      $(".first-name").text(newContact.firstName);
-      $(".last-name").text(newContact.lastName);
+    $(".task").last().click(function() {
+      $("#show-task").show();
+      $("#show-task h2").text(newTask.taskName);
+      $(".task-name").text(newTask.taskName);
+      $(".task-description").text(newTask.taskDescription);
     });
 
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
+    $("input#new-task-name").val("");
+    $("input#new-task-description").val("");
   });
 });
