@@ -3,9 +3,9 @@ function Task(name, description) {
   this.taskDescription = description;
 }
 
-//Contact.prototype.fullName = function() {
-  //return this.firstName + " " + this.lastName;
-//}
+Task.prototype.fullDescription = function() {
+  return this.taskName + ": " + this.taskDescription;
+}
 
 $(document).ready(function() {
   $("form#new-task").submit(function(event) {
@@ -16,13 +16,10 @@ $(document).ready(function() {
 
     var newTask = new Task(inputtedTaskName, inputtedTaskDescription);
 
-    $("ul#tasks").append("<li><span class='task'>" + newTask.taskName + "</span></li>");
+    $("ul#tasks").append("<li><span class='task'>" + newTask.fullDescription() + "</span></li>");
 
     $(".task").last().click(function() {
-      $("#show-task").show();
-      $("#show-task h2").text(newTask.taskName);
-      $(".task-name").text(newTask.taskName);
-      $(".task-description").text(newTask.taskDescription);
+      $(this).parent().remove();
     });
 
     $("input#new-task-name").val("");
